@@ -743,6 +743,11 @@
             Refund failed
             </summary>
         </member>
+        <member name="F:Binance.Net.Enums.FiatWithdrawDepositStatus.Expired">
+            <summary>
+            Expired
+            </summary>
+        </member>
         <member name="T:Binance.Net.Enums.FuturesMarginChangeDirectionType">
             <summary>
             The direction to change futures margin
@@ -4165,20 +4170,6 @@
             <param name="ct">Cancellation token</param>
             <returns>Exchange info</returns>
         </member>
-        <member name="M:Binance.Net.Interfaces.SubClients.Futures.IBinanceClientFuturesUsdtSystem.PingAsync(System.Threading.CancellationToken)">
-            <summary>
-            Pings the Binance Futures API
-            </summary>
-            <returns>True if successful ping, false if no response</returns>
-        </member>
-        <member name="M:Binance.Net.Interfaces.SubClients.Futures.IBinanceClientFuturesUsdtSystem.GetServerTimeAsync(System.Boolean,System.Threading.CancellationToken)">
-            <summary>
-            Requests the server for the local time. This function also determines the offset between server and local time and uses this for subsequent API calls
-            </summary>
-            <param name="resetAutoTimestamp">Whether the response should be used for a new auto timestamp calculation</param>
-            <param name="ct">Cancellation token</param>
-            <returns>Server time</returns>
-        </member>
         <member name="T:Binance.Net.Interfaces.SubClients.IBinanceClientBrokerage">
             <summary>
             Brokerage interface
@@ -5589,7 +5580,7 @@
             <summary>
             Create a virtual sub account
             </summary>
-            <param name="email">Virtual email of the sub account</param>
+            <param name="subAccountString">String based with which a subaccount email will be generated. Should not contain special characters</param>
             <param name="receiveWindow">The receive window for which this request is active. When the request takes longer than this to complete the server will reject the request</param>
             <param name="ct">Cancellation token</param>
             <returns></returns>
@@ -5989,6 +5980,15 @@
             <summary>
             Isolated margin account info
             </summary>
+            <param name="receiveWindow">The receive window for which this request is active. When the request takes longer than this to complete the server will reject the request</param>
+            <param name="ct">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Binance.Net.Interfaces.SubClients.Margin.IBinanceClientMargin.DisableIsolatedMarginAccountAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Disabled an isolated margin account info
+            </summary>
+            <param name="symbol">Symbol to enable isoldated margin account for</param>
             <param name="receiveWindow">The receive window for which this request is active. When the request takes longer than this to complete the server will reject the request</param>
             <param name="ct">Cancellation token</param>
             <returns></returns>
@@ -19578,7 +19578,7 @@
             <summary>
             Create a virtual sub account
             </summary>
-            <param name="email">Virtual email of the sub account</param>
+            <param name="subAccountString">String based with which a subaccount email will be generated. Should not contain special characters</param>
             <param name="receiveWindow">The receive window for which this request is active. When the request takes longer than this to complete the server will reject the request</param>
             <param name="ct">Cancellation token</param>
             <returns></returns>
@@ -20946,6 +20946,15 @@
             <summary>
             Isolated margin account info
             </summary>
+            <param name="receiveWindow">The receive window for which this request is active. When the request takes longer than this to complete the server will reject the request</param>
+            <param name="ct">Cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Binance.Net.SubClients.Margin.BinanceClientMargin.DisableIsolatedMarginAccountAsync(System.String,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Disabled an isolated margin account info
+            </summary>
+            <param name="symbol">Symbol to enable isoldated margin account for</param>
             <param name="receiveWindow">The receive window for which this request is active. When the request takes longer than this to complete the server will reject the request</param>
             <param name="ct">Cancellation token</param>
             <returns></returns>
